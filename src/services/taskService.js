@@ -1,4 +1,6 @@
+import { Task } from "../data/dummyData";
 import { storageService } from "./generalService/storageService"
+
 export const taskService = {
     query,
     add,
@@ -15,7 +17,15 @@ const entityType = "task";
 // time : new Date(),
 // priority: 3,
 // done : false
-
+function getEmptyTask (){
+    return {
+        title: '',
+        desc: '',
+        time: new Date(),
+        priority: 1,
+        isDone: false
+    }
+}
 function query(filter = null) {
     let tasks = storageService.query(entityType);
     if (filter) tasks = _filter(tasks, filter);
@@ -35,20 +45,18 @@ function remove(taskId) {
     const newTasks = storageService.remove(entityType,taskId);
     return newTasks;
 }
-function update(updateTask) {
-    const updateTask = storageService.put(entityType, updateTask);
-    return updateTask;
+function update(task) {
+    const updateTask = storageService.put(entityType, task);
+    return task;
 }
 
 // const filter1 = { done: true, priority: 2, time: new Date(), text: "goalkeeper" }
 // const filter2 = { done: null, priority: 2, time: null, text: "goalkeeper" }
 function _filter(tasks, filter) {
-
     let filterTasks = tasks.filter(task =>
-    (
-        (task.priority >= filter.priority) &&
-        (task.title.include(filter.text) ||
-            task.desc.include(filter.text))
-    ));
+            (task.title.includes(filter.text) ||
+                task.desc.includes(filter.text)) &&
+                !task.isDone
+            )
     return filterTasks;
 }

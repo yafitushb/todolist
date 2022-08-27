@@ -11,7 +11,7 @@ export const Task = [
         desc : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae qui aperiam maxime hic fugiat a magnam, corrupti neque iusto tenetur nesciunt impedit sit nisi quam reprehenderit cum distinctio optio Dolor",
         time : new Date(),
         priority: 3,
-        done : false
+        isDone : false
     },
     {
         _id : "t0002",
@@ -19,7 +19,7 @@ export const Task = [
         desc : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae qui aperiam maxime hic fugiat a magna",
         time : new Date(),
         priority: 2,
-        done : false
+        isDone : false
     },
     {
         _id : "t0003",
@@ -27,7 +27,7 @@ export const Task = [
         desc : "Lorem ipsum dolor sit ametr",
         time : new Date(),
         priority: 1,
-        done : true
+        isDone : true
     },
 ]
 export const Contact = [
